@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Search from "../components/Search";
-import CardItem from "../components/CardItem";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { clearRepos, fetchRepos } from "../store/reducers/ActionRepos";
 import { IRepo } from "../models/IRepo";
-import { RootState } from "../store/store";
+import { RootState } from "../store";
+import Search from "../components/Search";
+import CardItem from "../components/CardItem";
 import useDebounce from "../hooks/useDebounce";
 
 export default function Homepage() {
@@ -45,7 +45,7 @@ export default function Homepage() {
             repos.length
             ? 
             <div className="cards">{
-                repos.map((result: IRepo): React.ReactElement => <CardItem key={result.title + result.cardRepoUrl} {...result}/>)
+                repos.map((result: IRepo): ReactElement => <CardItem key={result.title + result.cardRepoUrl} {...result}/>)
             }</div>
             : null
         }

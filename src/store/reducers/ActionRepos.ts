@@ -1,4 +1,4 @@
-import { AppDispatch } from "../store";
+import { AppDispatch } from "..";
 import { repoSlice } from "./RepoSlice";
 
 
@@ -15,10 +15,6 @@ export const fetchRepos = (searchQuery: string) => async (dispatch: AppDispatch)
             cardRepoUrl: item.html_url,
         }))
         dispatch(repoSlice.actions.repoFetchSuccess(items));
-
-        // для отладки
-        // console.log('fetching');
-        // dispatch(repoSlice.actions.repoFetchSuccess([]));
     } catch (error: any) {
         dispatch(repoSlice.actions.repoFetchError(error.message));
     }
