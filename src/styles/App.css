@@ -12,7 +12,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   background-color: #eee;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: sans-serif, system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

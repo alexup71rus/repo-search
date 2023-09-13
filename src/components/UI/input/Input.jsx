@@ -6,6 +6,7 @@ export default forwardRef(function SearchInput(props, ref) {
         <input 
             className={cl.searchInput}
             type="search" 
+            name='search'
             {...props}
             ref={ref} />
     </div>

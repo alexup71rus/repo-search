@@ -9,6 +9,7 @@ export const fetchRepos = (searchQuery: string) => async (dispatch: AppDispatch)
         const data = await response.json();
         const items = data.items.map((item: any) => ({
             title: item.full_name,
+            description: item.description,
             ownerUrl: item.owner.html_url,
             avatarUrl: item.owner.avatar_url,
             cardRepoUrl: item.html_url,
