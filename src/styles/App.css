@@ -1,0 +1,18 @@
+:root {
+   --color-background-main: #232320;
+   --color-background-card: #1c1c1d;
+   --color: #fff;
+   --color-card-mark: #232320;
+   --color-card-mark: #232320;
+   --color-border: #49494bdd;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #eee;
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

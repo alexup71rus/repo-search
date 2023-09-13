@@ -1,0 +1,16 @@
+.search {}
+
+.searchInput {
+    padding: 5px 5px 6px 5px;
+    width: 100%;
+    background-color: #1c1c1d;
+    color: #fff;
+    line-height: 1.5em;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+}
+
+.searchInput:not(:placeholder-shown) {
+    background-color: #2e2e33;
+}
