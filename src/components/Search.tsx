@@ -5,7 +5,7 @@ type Props = {
     value: string;
     placeholder: string;
     onChange: (ev: ChangeEvent<HTMLInputElement>) => void;
-  };
+};
 
 export default function Search(props: Props) {
     const refInput: MutableRefObject<any> = useRef(null);

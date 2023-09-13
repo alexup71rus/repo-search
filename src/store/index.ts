@@ -1,8 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import RepoReducer from "./reducers/RepoSlice";
 
-
-
 const rootReducer = combineReducers({
     RepoReducer
 });

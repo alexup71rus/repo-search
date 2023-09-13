@@ -19,19 +19,19 @@ export const repoSlice = createSlice({
     name: 'repo',
     initialState,
     reducers: {
-        repoFetching(state) {
+        repoFetching(state: RepoState) {
             state.isLoading = true;
         },
-        repoFetchSuccess(state, action: PayloadAction<IRepo[]>) {
+        repoFetchSuccess(state: RepoState, action: PayloadAction<IRepo[]>) {
             state.isLoading = false;
             state.error = '';
             state.repos = action.payload;
         },
-        repoFetchError(state, action: PayloadAction<string>) {
+        repoFetchError(state: RepoState, action: PayloadAction<string>) {
             state.isLoading = false;
             state.error = action.payload;
         },
-        repoClear(state) {
+        repoClear(state: RepoState) {
             state.isLoading = false;
             state.error = '';
             state.repos = [];

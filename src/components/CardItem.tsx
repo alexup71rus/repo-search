@@ -1,7 +1,8 @@
 import cl from './CardItem.module.css';
 import useMark from '../hooks/useMark';
+import {IRepo} from '../models/IRepo'; // React.FC
 
-export default function CardItem({ title, description, cardRepoUrl, avatarUrl, ownerUrl }) {
+export default function CardItem({ title, description, cardRepoUrl, avatarUrl, ownerUrl }: IRepo): JSX.Element {
     const [, setMark] = useMark('https://github.com/alexup71rus', 'mark');
     const cardClasses = [cl.card];
 

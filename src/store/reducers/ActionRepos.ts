@@ -1,4 +1,5 @@
 import { AppDispatch } from "..";
+import { IRepo } from "../../models/IRepo";
 import { repoSlice } from "./RepoSlice";
 
 
@@ -7,7 +8,7 @@ export const fetchRepos = (searchQuery: string) => async (dispatch: AppDispatch)
         dispatch(repoSlice.actions.repoFetching());
         const response = await fetch('https://api.github.com/search/repositories?q=' + searchQuery);
         const data = await response.json();
-        const items = data.items.map((item: any) => ({
+        const items = data.items.map((item: any): IRepo => ({
             title: item.full_name,
             description: item.description,
             ownerUrl: item.owner.html_url,
@@ -21,6 +22,5 @@ export const fetchRepos = (searchQuery: string) => async (dispatch: AppDispatch)
 }
 
 export const clearRepos = () => async (dispatch: AppDispatch) => {
-    console.log('clear')
     dispatch(repoSlice.actions.repoClear());
 }
