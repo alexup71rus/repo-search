@@ -1,8 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { AppDispatch } from "..";
 import { IRepo } from "../../models/IRepo";
-// import { repoSlice } from "./RepoSlice";
-
 
 // export const fetchRepos = (searchQuery: string) => async (dispatch: AppDispatch) => {
 //     try {
@@ -47,8 +44,8 @@ export const fetchRepos = createAsyncThunk(
 )
 
 export const clearRepos = createAsyncThunk(
-    'clear/repositories',
+    'search/repositories',
     async (_, thunkAPI) => {
-        return [];
+        return []
     }
 )

@@ -34,26 +34,14 @@ export const repoSlice = createSlice({
         //     state.repos = [];
         // },
     },
-    // {
-    //     [fetchRepos.pending.type]: (state: RepoState, action: PayloadAction<IRepo[]>) => {
-    //         state.isLoading = true;
-    //     },
-    //     [fetchRepos.fulfilled.type]: (state: RepoState, action: PayloadAction<IRepo[]>) => {
-    //         state.isLoading = false;
-    //         state.error = '';
-    //         state.repos = action.payload;
-    //     },
-    //     [fetchRepos.rejected.type]: (state: RepoState, action: PayloadAction<string>) => {
-    //         state.isLoading = false;
-    //         state.error = action.payload;
-    //     }
-    // }
     extraReducers: builder => {
         builder
             .addCase(fetchRepos.pending, (state) => {
                 state.isLoading = true;
             })
             .addCase(fetchRepos.fulfilled, (state, action) => {
+                console.log(action);
+                
                 state.isLoading = false;
                 state.error = '';
                 state.repos = action.payload;
