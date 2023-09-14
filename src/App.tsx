@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './styles/App.css';
 
 import Layout from './layouts/LayoutMain';
@@ -9,7 +9,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Homepage/>}></Route>
-          <Route path='/*' element={<Homepage/>}></Route>
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     );
