@@ -40,8 +40,6 @@ export const repoSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(fetchRepos.fulfilled, (state, action) => {
-                console.log(action);
-                
                 state.isLoading = false;
                 state.error = '';
                 state.repos = action.payload;

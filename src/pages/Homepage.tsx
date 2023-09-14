@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { clearRepos, fetchRepos } from "../store/reducers/ActionRepos";
 import { IRepo } from "../models/IRepo";
@@ -11,9 +11,8 @@ import useDebounce from "../hooks/useDebounce";
 export default function Homepage() {
     const dispatch = useAppDispatch();
     const {repos} = useAppSelector((state: RootState) => state.RepoReducer);
-    const urlParams = useParams();
-    const navigate = useNavigate();
-    const [query, setQuery] = useState(urlParams['*'] ?? '');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [query, setQuery] = useState(searchParams.get('q') || '');
     const debouncedValue = useDebounce(query, 1500);
 
     const debouncedCallback = useCallback(() => {
@@ -39,7 +38,7 @@ export default function Homepage() {
             placeholder='Введите запрос'
             onChange={(ev) => {
                 setQuery(ev.target.value);
-                navigate('/' + ev.target.value);
+                setSearchParams('q=' + ev.target.value)
             }} />
         {
             repos.length
