@@ -28,7 +28,7 @@ export const fetchRepos = createAsyncThunk(
     'search/repositories',
     async (query: string, thunkAPI) => {
         try {
-            const response = await fetch('https://api.github.com/search/repositories?q' + query);
+            const response = await fetch('https://api.github.com/search/repositories?q=' + query);
             const data = await response.json();
 
             if (data.message) {

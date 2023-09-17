@@ -46,7 +46,7 @@ export default function Homepage() {
             <div className="cards">{
                 repos.map((result: IRepo): ReactElement => <CardItem key={result.title + result.cardRepoUrl} {...result}/>)
             }</div>
-            : <div className="error">{error}</div>
+            : <div className="error">{(error && 'Ошибка:' + error) || 'Упс. Что-то пошло не так.'}</div>
         }
         </>
     )
