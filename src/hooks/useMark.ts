@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from "react";
 
-export default function useMark<T>(value: T, mark: string): any[] {
+export default function useMark<T extends string>(value: T, mark: T): any[] {
     const [state, setState] = useState('');
     const isMarked: string = (value === state) ? mark : '';
 

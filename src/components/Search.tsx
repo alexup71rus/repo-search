@@ -1,14 +1,14 @@
-import { ChangeEvent, MutableRefObject, useEffect, useRef } from "react";
+import { ChangeEvent, FC, MutableRefObject, memo, useEffect, useRef } from "react";
 import SearchInput from './UI/input/Input';
 
-type Props = {
-    value: string;
-    placeholder: string;
+interface SearchProps {
+    value?: string;
+    placeholder?: string;
     onChange: (ev: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default function Search(props: Props) {
-    const refInput: MutableRefObject<any> = useRef(null);
+const Search: FC<SearchProps> = memo((props) => {
+    const refInput: MutableRefObject<any> = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         refInput.current.focus();
@@ -17,4 +17,6 @@ export default function Search(props: Props) {
     return <SearchInput
         {...props}
         ref={refInput} />;
-}
+});
+
+export default Search;

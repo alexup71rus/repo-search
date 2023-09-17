@@ -1,10 +1,11 @@
 import cl from './CardItem.module.css';
 import useMark from '../hooks/useMark';
 import {IRepo} from '../models/IRepo'; // React.FC
+import { memo, useMemo } from 'react';
 
-export default function CardItem({ title, description, cardRepoUrl, avatarUrl, ownerUrl }: IRepo): JSX.Element {
+const CardItem = memo(({ title, description, cardRepoUrl, avatarUrl, ownerUrl }: IRepo) => {
     const [, setMark] = useMark('https://github.com/alexup71rus', 'mark');
-    const cardClasses = [cl.card];
+    const cardClasses = useMemo(() => [cl.card], []);
 
 
     if (setMark(ownerUrl)) {
@@ -24,4 +25,6 @@ export default function CardItem({ title, description, cardRepoUrl, avatarUrl, o
             </a>
         </div>
     )
-}
+});
+
+export default CardItem;

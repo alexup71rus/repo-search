@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { IRepo } from "../../models/IRepo";
 
+// оставил для наглядного примера похожей реализации
 // export const fetchRepos = (searchQuery: string) => async (dispatch: AppDispatch) => {
 //     try {
 //         dispatch(repoSlice.actions.repoFetching());
@@ -27,8 +28,13 @@ export const fetchRepos = createAsyncThunk(
     'search/repositories',
     async (query: string, thunkAPI) => {
         try {
-            const response = await fetch('https://api.github.com/search/repositories?q=' + query);
+            const response = await fetch('https://api.github.com/search/repositories?q' + query);
             const data = await response.json();
+
+            if (data.message) {
+                throw Error(data.message);
+            }
+            
             
             return data.items.map((item: any): IRepo => ({
                 title: item.full_name,
@@ -38,7 +44,7 @@ export const fetchRepos = createAsyncThunk(
                 cardRepoUrl: item.html_url,
             }));
         } catch (error) {
-            thunkAPI.rejectWithValue((error as Error).message);
+            return thunkAPI.rejectWithValue((error as Error).message);
         }
     }
 )

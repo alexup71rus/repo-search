@@ -10,7 +10,7 @@ import useDebounce from "../hooks/useDebounce";
 
 export default function Homepage() {
     const dispatch = useAppDispatch();
-    const {repos} = useAppSelector((state: RootState) => state.RepoReducer);
+    const {repos, error} = useAppSelector((state: RootState) => state.RepoReducer);
     const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState(searchParams.get('q') || '');
     const debouncedValue = useDebounce(query, 1500);
@@ -41,12 +41,12 @@ export default function Homepage() {
                 setSearchParams('q=' + ev.target.value)
             }} />
         {
-            repos.length
+            repos?.length
             ? 
             <div className="cards">{
                 repos.map((result: IRepo): ReactElement => <CardItem key={result.title + result.cardRepoUrl} {...result}/>)
             }</div>
-            : null
+            : <div className="error">{error}</div>
         }
         </>
     )

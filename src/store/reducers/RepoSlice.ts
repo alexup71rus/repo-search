@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { IRepo } from "../../models/IRepo";
 import { RepoState } from "../../models/IRepoState";
 import { fetchRepos } from "./ActionRepos";
 
@@ -16,6 +15,7 @@ export const repoSlice = createSlice({
     name: 'repo',
     initialState,
     reducers: {
+        // оставил для наглядного примера похожей реализации
         // repoFetching(state: RepoState) {
         //     state.isLoading = true;
         // },
