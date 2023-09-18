@@ -2,9 +2,11 @@ import { ChangeEvent, FC, MutableRefObject, memo, useEffect, useRef } from "reac
 import SearchInput from './UI/input/Input';
 
 interface SearchProps {
+    onChange: (ev: ChangeEvent<HTMLInputElement>) => void;
+    type?: string;
+    name?: string;
     value?: string;
     placeholder?: string;
-    onChange: (ev: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Search: FC<SearchProps> = memo((props) => {

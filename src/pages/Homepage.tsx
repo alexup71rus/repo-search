@@ -13,7 +13,7 @@ export default function Homepage() {
     const {repos, error} = useAppSelector((state: RootState) => state.RepoReducer);
     const [searchParams, setSearchParams] = useSearchParams();
     const [query, setQuery] = useState(searchParams.get('q') || '');
-    const debouncedValue = useDebounce(query, 1500);
+    const debouncedValue = useDebounce(query, 800);
 
     const debouncedCallback = useCallback(() => {
         if (query) {
@@ -36,6 +36,8 @@ export default function Homepage() {
         <Search 
             value={query}
             placeholder='Введите запрос'
+            type='search' 
+            name='search'
             onChange={(ev) => {
                 setQuery(ev.target.value);
                 setSearchParams('q=' + ev.target.value)

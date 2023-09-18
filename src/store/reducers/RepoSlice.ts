@@ -47,6 +47,7 @@ export const repoSlice = createSlice({
             .addCase(fetchRepos.rejected, (state, action: PayloadAction<any>) => {
                 state.isLoading = false;
                 state.error = action.payload;
+                state.repos = [];
             })
     }
 });
